@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #07080c;
+  --color-surface: #12141c;
+  --color-surface-2: #1a1d27;
+  --color-card: #12141c;
+  --color-foreground: #eceef2;
+  --color-muted-foreground: #8e93a3;
+  --color-primary: #d7dde6;
+  --color-primary-foreground: #0a0c10;
+  --color-border: color-mix(in oklab, #eceef2 12%, transparent);
+  --color-ring: #8eb8cc;
+  --color-accent: #8eb8cc;
+  --color-danger: #c9847a;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Newsreader", ui-serif, Georgia, serif;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-quick: 150ms;
+  --tracking-tight: -0.02em;
+  --tracking-display: -0.03em;
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+}
+
+@layer base {
+  :root {
+    /* Grok pill + Remix sit over the top of the webview. Never hide them — sit under. */
+    --chrome-top: calc(env(safe-area-inset-top, 0px) + 4.25rem);
+    --chrome-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    background: var(--color-bg);
+    color: var(--color-foreground);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: var(--leading-normal);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
